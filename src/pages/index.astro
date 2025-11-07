@@ -59,29 +59,35 @@ const navLinks = [
 
     <main>
       <!-- HERO -->
-      <section class="hero hero-full" id="top">
-        <div class="hero-background">
-          <!-- Replace src with your large Timberline Code Forge logo -->
-          <img
-            src="/images/timberline-logo.png"
-            alt="Timberline Code Forge logo"
-            class="hero-logo"
-            width="800"
-            height="800"
-            loading="eager"
-          />
-        </div>
-      
+      <section class="hero" id="top">
         <div class="hero-overlay"></div>
-      
-        <div class="container hero-content">
-          <h1 class="hero-title">Software, thoughtfully crafted at the timberline.</h1>
-          <p class="hero-subtitle">
-            Custom software, architecture, and DevOps forged with Northwest resilience.
-          </p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn-primary">Start a Project</a>
-            <a href="#services" class="btn-ghost">Explore Services</a>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="pill">Forged in the Pacific Northwest</p>
+            <h1>Software, thoughtfully crafted at the timberline.</h1>
+            <p class="hero-lead">
+              Timberline Code Forge helps teams design, build, and operate
+              durable software systems. From embedded services to cloud-native
+              platforms, we focus on clean architecture, maintainability, and
+              delivery that actually sticks.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn-primary">Get a proposal</a>
+              <a href="#services" class="btn-ghost">Explore services</a>
+            </div>
+            <div class="hero-meta">
+              <span>Custom software • Architecture &amp; DevOps • Technical leadership</span>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <h2>What we do</h2>
+            <ul>
+              <li><span>Custom APIs, services, and integrations</span></li>
+              <li><span>System &amp; cloud architecture</span></li>
+              <li><span>CI/CD and deployment automation</span></li>
+              <li><span>Observability &amp; performance tuning</span></li>
+            </ul>
           </div>
         </div>
       </section>
@@ -864,78 +870,5 @@ const navLinks = [
         align-items: flex-start;
       }
     }
-
-    .hero-full {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 95vh;
-      text-align: center;
-      overflow: hidden;
-    }
-    
-    .hero-background {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .hero-logo {
-      width: 65%;
-      max-width: 800px;
-      height: auto;
-      opacity: 0.9;
-      object-fit: contain;
-      transition: transform 10s ease, opacity 1s ease;
-    }
-    
-    .hero-logo:hover {
-      transform: scale(1.02);
-      opacity: 1;
-    }
-    
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(13, 42, 38, 0.2) 0%,
-        rgba(13, 42, 38, 0.9) 100%
-      );
-      pointer-events: none;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      margin-top: 30vh;
-      color: var(--snow-cream);
-    }
-    
-    .hero-title {
-      font-family: Poppins, Inter, sans-serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin: 0.5rem 0;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.15rem;
-      color: var(--moss-200);
-      margin-bottom: 1.5rem;
-    }
-    
-    @media (max-width: 768px) {
-      .hero-logo {
-        width: 90%;
-      }
-      .hero-content {
-        margin-top: 50vh;
-      }
-    }
-
   </style>
 </html>
