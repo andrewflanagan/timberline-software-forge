@@ -236,7 +236,7 @@ const navLinks = [
             </header>
           </div>
 
-          <form class="contact-form">
+          <form class="contact-form" id="contact-form" method="POST" action="/api/contact">
             <div class="field">
               <label for="name">Name</label>
               <input id="name" name="name" type="text" required />
@@ -256,18 +256,24 @@ const navLinks = [
                 name="message"
                 rows="4"
                 placeholder="Short description of your platform, current challenges, and timelines…"
+                required
               ></textarea>
             </div>
+          
             <button type="submit" class="btn-primary full">
               Send message
             </button>
+          
             <p class="contact-note">
               Or email us directly at
               <a href="mailto:hello@timberlinecodeforge.com">
                 hello@timberlinecodeforge.com
               </a>
             </p>
+          
+            <p id="form-status" class="form-status" aria-live="polite"></p>
           </form>
+
         </div>
       </section>
     </main>
@@ -820,5 +826,44 @@ const navLinks = [
       }
     }
   </style>
+
+  <script>
+    if (typeof window !== "undefined") {
+      const form = document.getElementById("contact-form");
+      const statusEl = document.getElementById("form-status");
+  
+      if (form && statusEl) {
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+  
+          statusEl.textContent = "Sending…";
+          statusEl.className = "form-status";
+  
+          try {
+            const formData = new FormData(form);
+            const res = await fetch(form.action, {
+              method: "POST",
+              body: formData,
+            });
+  
+            if (res.ok) {
+              form.reset();
+              statusEl.textContent = "Thanks — we’ll be in touch shortly.";
+              statusEl.className = "form-status success";
+            } else {
+              statusEl.textContent =
+                "Something went wrong. Please email us at hello@timberlinecodeforge.com.";
+              statusEl.className = "form-status error";
+            }
+          } catch (err) {
+            statusEl.textContent =
+              "Could not send right now. Please email us at hello@timberlinecodeforge.com.";
+            statusEl.className = "form-status error";
+          }
+        });
+      }
+    }
+  </script>
+
 
 </html>
