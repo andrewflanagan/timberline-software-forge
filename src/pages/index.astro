@@ -47,32 +47,21 @@ const navLinks = [
 
     <main>
 
-      <!-- HERO (logo as full-bleed blurred background) -->
-      <section class="hero" id="top">
-        <!-- Blurred, extended background based on the logo -->
+      <!-- HERO (widescreen background showcase) -->
+      <section class="hero hero-wide" id="top">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
       
         <div class="container hero-inner">
-          <!-- Crisp logo on top -->
-          <img
-            src="/images/timberline-logo.png"
-            alt="Timberline Code Forge logo with Mount Rainier and forest circuit"
-            class="hero-logo"
-            width="800"
-            height="800"
-            loading="eager"
-          />
-      
           <p class="pill pill-hero">Forged in the Pacific Northwest</p>
       
           <h1 class="hero-title">
-            System software and autonomy, built to survive the field.
+            System software and autonomy, built to survive in the field.
           </h1>
       
           <p class="hero-subtitle">
-            Timberline Code Forge helps teams design and implement back-end and
-            on-vehicle software for robots, sensors, and mission-critical systems.
+            Timberline Code Forge designs and implements back-end and on-vehicle
+            systems for robotics, sensors, and mission-critical software.
           </p>
       
           <div class="hero-actions">
@@ -442,117 +431,86 @@ const navLinks = [
       background: var(--copper-500);
     }
 
-    /* HERO with blurred logo background */
-    
-    .hero {
-      position: relative;
-      min-height: 80vh;
-      padding: 4.5rem 0 3.5rem;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-    
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url("/images/timberline-logo.png");
-      background-size: cover;
-      background-position: center;
-      filter: blur(14px);
-      transform: scale(1.15);          /* zoom a bit so blurred edges don’t show */
-      opacity: 0.75;
-      pointer-events: none;
-    }
-    
-    /* darker gradient so text stays readable */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(
-          80% 80% at 50% 0%,
-          rgba(11, 39, 34, 0.1),
-          transparent 55%
-        ),
-        linear-gradient(
-          180deg,
-          rgba(11, 39, 34, 0.05) 0%,
-          rgba(11, 39, 34, 0.85) 70%,
-          rgba(11, 39, 34, 1) 100%
-        );
-      pointer-events: none;
-    }
-    
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .hero-logo {
-      width: min(640px, 70vw);
-      height: auto;
-      margin: 0 auto 1.4rem;
-      display: block;
-      filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55));
-    }
-    
-    /* reuse / tweak existing pill + typography */
-    
-    .pill {
-      display: inline-block;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(10, 20, 20, 0.9);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--moss-200);
-    }
-    
-    .pill-hero {
-      margin-bottom: 0.5rem;
-    }
-    
-    .hero-title {
-      font-family: Poppins, Inter, system-ui, sans-serif;
-      font-size: clamp(2rem, 4.4vw, 3rem);
-      line-height: 1.12;
-      margin: 0.3rem 0 0.75rem;
-      color: var(--snow-cream);
-    }
-    
-    .hero-subtitle {
-      font-size: 1.02rem;
-      max-width: 40rem;
-      margin: 0 auto 1.6rem;
-      color: var(--moss-200);
-    }
-    
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.85rem;
-    }
-    
-    /* buttons reuse your existing .btn-primary / .btn-ghost styles */
-    
-    @media (max-width: 640px) {
-      .hero {
-        padding: 3.5rem 0 2.6rem;
-        min-height: 70vh;
-      }
-    
-      .hero-logo {
-        width: min(280px, 75vw);
-        margin-bottom: 1.1rem;
-      }
-    }
+/* HERO (widescreen illustration) */
+.hero-wide {
+  position: relative;
+  height: 100vh;
+  min-height: 720px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url("/images/timberline-logo.png") center center / cover no-repeat;
+  transform: scale(1.03);
+  filter: brightness(0.9);
+  will-change: transform;
+  transition: transform 1s ease-out;
+}
+
+/* Add gentle motion on scroll */
+.hero-wide:hover .hero-bg {
+  transform: scale(1.06);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 25, 23, 0.3) 0%,
+    rgba(10, 25, 23, 0.85) 70%,
+    rgba(10, 25, 23, 1) 100%
+  );
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  color: var(--snow-cream);
+  margin-bottom: 12vh;
+  max-width: 720px;
+}
+
+.hero-title {
+  font-family: Poppins, Inter, sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  margin-bottom: 0.6rem;
+  line-height: 1.1;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--moss-200);
+  max-width: 42rem;
+  margin: 0 auto 1.8rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero-wide {
+    min-height: 85vh;
+  }
+  .hero-inner {
+    margin-bottom: 10vh;
+    padding: 0 1rem;
+  }
+  .hero-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+}
+
 
     .btn-primary,
     .btn-ghost {
@@ -846,15 +804,6 @@ const navLinks = [
     @media (max-width: 640px) {
       .section {
         padding: 2.6rem 0;
-      }
-
-      .hero {
-        padding: 3.5rem 0 2.6rem;
-      }
-    
-      .hero-logo {
-        width: min(280px, 75vw);
-        margin-bottom: 1.1rem;
       }
 
       .section-header h2 {
